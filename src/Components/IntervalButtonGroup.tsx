@@ -5,6 +5,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
+      textTransform: "none",
     },
   },
 }));
@@ -26,9 +27,7 @@ export default function IntervalButtonGroup() {
     "P8",
   ]; //should we do diminished and augmented too? Doesn't matter for aural, but could for visual
   const intervalButtons = intervalArray.map((interval) => (
-    <Button style={{ textTransform: "none" }} variant="contained">
-      {interval}
-    </Button>
+    <Button variant="contained">{interval}</Button>
   ));
 
   return <div className={classes.root}>{intervalButtons}</div>;
