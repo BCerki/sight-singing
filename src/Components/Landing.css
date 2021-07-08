@@ -1,6 +1,6 @@
 .cards {
   display: flex;
-  justify-content: space-around;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
   margin: 5em;
 }
