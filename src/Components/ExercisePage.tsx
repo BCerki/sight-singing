@@ -17,10 +17,12 @@ const ExercisePage: React.FC = () => {
   const checkAnswer = function (event: React.MouseEvent<HTMLButtonElement>) {
     const { target } = event;
     if (target) console.log((target as HTMLButtonElement).value);
+    //toggle display of exercise vs answer key
+    setDisplayExercise(false);
   };
 
-  const toggleExercise = function () {
-    setDisplayExercise(!displayExercise);
+  const newExercise = function () {
+    setDisplayExercise(true);
   };
 
   return (
@@ -33,7 +35,7 @@ const ExercisePage: React.FC = () => {
         {displayExercise ? (
           <Exercise exercise="testexercise" />
         ) : (
-          <Answer answer="true" />
+          <Answer answer="true" newExercise={newExercise} />
         )}
       </div>
       <div className="intervalButtons">
