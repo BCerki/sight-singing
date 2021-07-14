@@ -14,10 +14,11 @@ const ExercisePage: React.FC = () => {
     setCounter(counter + 1);
   };
 
-  const checkAnswer = function (event: React.MouseEvent<HTMLButtonElement>) {
-    const { target } = event;
-    if (target) console.log((target as HTMLButtonElement).value);
-    //toggle display of exercise vs answer key
+  const checkAnswer = function (event: React.MouseEvent) {
+    const target = event.target as HTMLButtonElement;
+    if (target) console.log("target.value is", target.value);
+
+    //change from displaying exercise to displaying answer
     setDisplayExercise(false);
   };
 

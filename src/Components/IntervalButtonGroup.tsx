@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type IntervalButtonGroupProps = {
-  checkAnswer: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  checkAnswer: (event: React.MouseEvent) => void;
 };
 
 const IntervalButtonGroup: React.FC<IntervalButtonGroupProps> = ({
