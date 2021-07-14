@@ -1,5 +1,7 @@
 import ExercisePage from "./Components/ExercisePage";
 import "./App.css";
+import Landing from './Components/Landing';
+
 
 function App() {
   return (
@@ -9,8 +11,9 @@ function App() {
         <h1>Exercise page below</h1>
         <ExercisePage />
       </div>
+      <Landing />
     </div>
-  );
+  )
 }
 
 export default App;
