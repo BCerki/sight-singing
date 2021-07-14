@@ -10,7 +10,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function IntervalButtonGroup() {
+type IntervalButtonGroupProps = {
+  checkAnswer: (event: React.MouseEvent<HTMLButtonElement>) => void;
+};
+
+const IntervalButtonGroup: React.FC<IntervalButtonGroupProps> = ({
+  checkAnswer,
+}) => {
   const classes = useStyles();
   const intervalArray: string[] = [
     "P1",
@@ -27,8 +33,12 @@ export default function IntervalButtonGroup() {
     "P8",
   ]; //should we do diminished and augmented too? Doesn't matter for aural, but could for visual
   const intervalButtons = intervalArray.map((interval) => (
-    <Button variant="contained">{interval}</Button>
+    <Button key={interval} onClick={checkAnswer}>
+      {interval}
+    </Button>
   ));
 
   return <div className={classes.root}>{intervalButtons}</div>;
-}
+};
+
+export default IntervalButtonGroup;
