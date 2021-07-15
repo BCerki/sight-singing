@@ -3,9 +3,10 @@ import Button from "@material-ui/core/Button";
 type ExerciseProps = {
   exercise: string;
   playAuralExercise: () => void;
+  showVisualExercise: () => void;
 };
 
-const Exercise: React.FC<ExerciseProps> = ({ exercise, playAuralExercise }) => {
+const Exercise: React.FC<ExerciseProps> = ({ exercise, playAuralExercise, showVisualExercise }) => {
   if (exercise === "aural") {
     return (
       <Button variant="contained" onClick={playAuralExercise}>
@@ -14,7 +15,7 @@ const Exercise: React.FC<ExerciseProps> = ({ exercise, playAuralExercise }) => {
     );
   }
   if (exercise === "visual") {
-    return <div>I am a placeholder for the visual component</div>;
+    return <div>{showVisualExercise}</div>;
   }
   return <div>I am a placeholder for the sing component</div>;
 };

@@ -8,6 +8,7 @@ import Answer from "./Answer";
 import * as Tone from "tone";
 //music theory
 import { Note, Interval, Distance, Scale, Chord } from "tonal";
+import Vex from 'vexflow';
 
 import "./ExercisePage.css";
 
@@ -214,6 +215,25 @@ const ExercisePage: React.FC = () => {
     synth.triggerAttackRelease(secondNote, "4n", now + 1);
   };
 
+  const showVisualExercise = function () {
+
+    const vf = new Vex.Flow.Factory({
+      renderer: {elementId: 'boo', width: 500, height: 200}
+    });
+    
+    const score = vf.EasyScore();
+    const system = vf.System();
+    
+    system.addStave({
+      voices: [
+        score.voice(score.notes('C#5/q, B4, A4, G#4', {stem: 'up'})),
+        score.voice(score.notes('C#4/h, C#4', {stem: 'down'}))
+      ]
+    }).addClef('treble').addTimeSignature('4/4');
+    
+    vf.draw();
+  }
+
   const checkAnswer = function (event: React.MouseEvent) {
     const correctInterval = intervalState.interval;
     const userInterval = event.currentTarget.textContent;
@@ -257,6 +277,7 @@ const ExercisePage: React.FC = () => {
           <Exercise
             exercise={exerciseType}
             playAuralExercise={playAuralExercise}
+            showVisualExercise={showVisualExercise}
           />
         </div>
         <div className="counter">
