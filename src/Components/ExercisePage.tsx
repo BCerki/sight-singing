@@ -9,7 +9,7 @@ import "./ExercisePage.css";
 const ExercisePage: React.FC = () => {
   const [counter, setCounter] = useState(0);
   const [displayAnswer, setDisplayAnswer] = useState(false);
-  const [correctAnswer, setCorrectAnswer] = useState(true);
+  const [correctAnswer, setCorrectAnswer] = useState(true); //initial state doesn't matter; just had to set it to something
 
   const increment = function () {
     setCounter(counter + 1);
