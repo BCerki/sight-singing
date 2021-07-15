@@ -1,12 +1,19 @@
 import Button from "@material-ui/core/Button";
 
 type AnswerProps = {
-  answer: boolean;
+  correctAnswer: boolean | null;
+  correctInterval: string;
   newExercise: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-const Answer: React.FC<AnswerProps> = ({ answer, newExercise }) => {
-  const marked = answer ? "Correct!" : "Incorrect";
+const Answer: React.FC<AnswerProps> = ({
+  correctAnswer,
+  correctInterval,
+  newExercise,
+}) => {
+  const marked = correctAnswer
+    ? "Correct!"
+    : `Incorrect. The answer was ${correctInterval}.`;
 
   return (
     <div>
