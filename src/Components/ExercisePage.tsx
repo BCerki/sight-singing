@@ -14,6 +14,7 @@ import "./ExercisePage.css";
 //lodash array methods
 const _ = require("lodash");
 
+//state interfaces
 interface AnswerState {
   display: boolean;
   correctInterval: any;
@@ -35,6 +36,9 @@ const ExercisePage: React.FC = () => {
     userInterval: "",
     correctAnswer: null,
   };
+
+  const [answerState, setAnswerState] = useState(initialAnswerState);
+
   //interval state
   const octave: number = _.sample(_.range(2, 6));
 
@@ -61,15 +65,13 @@ const ExercisePage: React.FC = () => {
     secondNote,
     interval: formattedInterval,
   };
-
-  const [answerState, setAnswerState] = useState(initialAnswerState);
-
+  //counter state
   const [counter, setCounter] = useState(0);
 
   const increment = function () {
     setCounter(counter + 1);
   };
-
+  //helper functions
   const playAuralExercise = function () {
     const synth = new Tone.Synth().toDestination();
     const now = Tone.now();
@@ -108,6 +110,7 @@ const ExercisePage: React.FC = () => {
     setAnswerState(initialAnswerState);
   };
 
+  //choose which exercise type to display
   const location = useLocation();
   const exerciseType = location.pathname;
 
