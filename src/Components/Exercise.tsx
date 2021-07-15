@@ -1,13 +1,13 @@
+import Button from "@material-ui/core/Button";
+
 type ExerciseProps = {
   exercise: string;
 };
 
 const Exercise: React.FC<ExerciseProps> = ({ exercise }) => {
-  return (
-    <div>
-      i am an image of a staff or a button to play some sound. i am
-      exerciseprops: {exercise}
-    </div>
-  );
+  if (exercise === "aural") {
+    return <Button variant="contained">Play Interval</Button>;
+  }
+  return <div>I am a placeholder for the visual exercise component</div>;
 };
 export default Exercise;

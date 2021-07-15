@@ -39,18 +39,21 @@ const ExercisePage: React.FC = () => {
     setDisplayExercise(true);
   };
 
+  const exerciseProp = "aural"; //this will be how we select which one to show?
+
   return (
     <main className="container">
-      <div className="counter">
-        <Counter counter={counter} />
-      </div>
-
       <div>
-        {displayExercise ? (
-          <Exercise exercise="testexercise" />
-        ) : (
-          <Answer answer={correctAnswer} newExercise={newExercise} />
-        )}
+        <div className="answer">
+          {displayExercise ? (
+            <Exercise exercise={exerciseProp} />
+          ) : (
+            <Answer answer={correctAnswer} newExercise={newExercise} />
+          )}
+        </div>
+        <div className="counter">
+          <Counter counter={counter} />
+        </div>
       </div>
       <div className="intervalButtons">
         <IntervalButtonGroup checkAnswer={checkAnswer} />
