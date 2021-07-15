@@ -4,13 +4,19 @@ import IntervalButtonGroup from "./IntervalButtonGroup";
 import Counter from "./Counter";
 import Exercise from "./Exercise";
 import Answer from "./Answer";
+//playing sound
 import * as Tone from "tone";
+//music theory
+import { Note, Interval, Distance, Scale, Chord } from "tonal";
 
 import "./ExercisePage.css";
 
+//lodash array methods
+const _ = require("lodash");
+
 interface AnswerState {
   display: boolean;
-  correctInterval: string;
+  correctInterval: any;
   userInterval: string | null;
   correctAnswer: boolean | null;
 }
@@ -18,9 +24,9 @@ interface AnswerState {
 const ExercisePage: React.FC = () => {
   const initialAnswerState: AnswerState = {
     display: false,
-    correctAnswer: null,
     correctInterval: "",
     userInterval: "",
+    correctAnswer: null,
   };
 
   const [answerState, setAnswerState] = useState(initialAnswerState);
@@ -32,14 +38,36 @@ const ExercisePage: React.FC = () => {
   };
 
   const generateInterval = function () {
-    return { firstNote: "E4", secondNote: "F4", interval: "m2" };
+    const octave: number = _.sample(_.range(2, 6));
+
+    const firstNote =
+      _.sample(["A", "B", "C", "D", "E", "F", "G"]) +
+      _.sample(["b", "#", ""]) +
+      octave;
+
+    const secondNote =
+      _.sample(["A", "B", "C", "D", "E", "F", "G"]) +
+      _.sample(["b", "#", ""]) +
+      octave;
+
+    const interval = Distance.interval(firstNote, secondNote);
+
+    return { firstNote, secondNote, interval };
   };
 
   const playAuralExercise = function () {
     const synth = new Tone.Synth().toDestination();
     const now = Tone.now();
-    const firstNote = generateInterval().firstNote;
-    const secondNote = generateInterval().secondNote;
+    const { firstNote, secondNote, interval } = generateInterval();
+
+    console.log(
+      "first note",
+      firstNote,
+      "second note",
+      secondNote,
+      "interval",
+      interval
+    );
     synth.triggerAttackRelease(firstNote, "4n", now);
     synth.triggerAttackRelease(secondNote, "4n", now + 1);
   };
