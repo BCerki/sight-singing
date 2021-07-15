@@ -166,6 +166,8 @@ const ExercisePage: React.FC = () => {
       <Answer
         correctAnswer={answerState.correctAnswer}
         correctInterval={answerState.correctInterval}
+        firstNote={intervalState.firstNote}
+        secondNote={intervalState.secondNote}
         newExercise={newExercise}
       />
     );
