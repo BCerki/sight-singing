@@ -53,6 +53,7 @@ const ExercisePage: React.FC = () => {
     octave;
 
   const interval = Distance.interval(firstNote, secondNote);
+  //reformat and simplify Tonal's intervals to our button ones
   const stringInterval: string = interval as string;
   const formattedInterval: string | string[] = stringInterval
     .split("")
@@ -60,10 +61,56 @@ const ExercisePage: React.FC = () => {
     .join("")
     .replace("-", "");
 
+  let equivalentInterval = "";
+  //still need to add double dim and aug FIX FIX
+  switch (formattedInterval) {
+    case "d2":
+      equivalentInterval = "P1";
+      break;
+    case "A1":
+      equivalentInterval = "m2";
+      break;
+    case "d3":
+      equivalentInterval = "M2";
+      break;
+    case "A2":
+      equivalentInterval = "m3";
+      break;
+    case "d4":
+      equivalentInterval = "M3";
+      break;
+    case "A3":
+      equivalentInterval = "P4";
+      break;
+    case "d5":
+      equivalentInterval = "A4";
+      break;
+    case "d6":
+      equivalentInterval = "P5";
+      break;
+    case "A5":
+      equivalentInterval = "m6";
+      break;
+    case "d7":
+      equivalentInterval = "M6";
+      break;
+    case "A6":
+      equivalentInterval = "m7";
+      break;
+    case "d8":
+      equivalentInterval = "M7";
+      break;
+    case "A7":
+      equivalentInterval = "P8";
+      break;
+    default:
+      equivalentInterval = formattedInterval;
+  }
+
   const intervalState: IntervalState = {
     firstNote,
     secondNote,
-    interval: formattedInterval,
+    interval: equivalentInterval,
   };
   //counter state
   const [counter, setCounter] = useState(0);
