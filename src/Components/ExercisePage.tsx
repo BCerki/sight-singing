@@ -49,11 +49,17 @@ const ExercisePage: React.FC = () => {
     octave;
 
   const interval = Distance.interval(firstNote, secondNote);
+  const stringInterval: string = interval as string;
+  const formattedInterval: string | string[] = stringInterval
+    .split("")
+    .reverse()
+    .join("")
+    .replace("-", "");
 
   const intervalState: IntervalState = {
     firstNote,
     secondNote,
-    interval,
+    interval: formattedInterval,
   };
 
   const [answerState, setAnswerState] = useState(initialAnswerState);
