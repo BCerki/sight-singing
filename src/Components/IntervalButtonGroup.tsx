@@ -33,7 +33,7 @@ const IntervalButtonGroup: React.FC<IntervalButtonGroupProps> = ({
     "P8",
   ]; //should we do diminished and augmented too? Doesn't matter for aural, but could for visual
   const intervalButtons = intervalArray.map((interval) => (
-    <Button key={interval} onClick={checkAnswer}>
+    <Button variant="contained" key={interval} onClick={checkAnswer}>
       {interval}
     </Button>
   ));
