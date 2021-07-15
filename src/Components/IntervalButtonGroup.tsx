@@ -25,6 +25,7 @@ const IntervalButtonGroup: React.FC<IntervalButtonGroupProps> = ({
     "m3",
     "M3",
     "P4",
+    "A4",
     "P5",
     "m6",
     "M6",
