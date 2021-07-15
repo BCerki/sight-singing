@@ -4,10 +4,11 @@ import IntervalButtonGroup from "./IntervalButtonGroup";
 import Counter from "./Counter";
 import Exercise from "./Exercise";
 import Answer from "./Answer";
+import * as Tone from "tone";
 
 import "./ExercisePage.css";
 
-interface State {
+interface AnswerState {
   display: boolean;
   correctInterval: string;
   userInterval: string | null;
@@ -15,7 +16,7 @@ interface State {
 }
 
 const ExercisePage: React.FC = () => {
-  const initialAnswerState: State = {
+  const initialAnswerState: AnswerState = {
     display: false,
     correctAnswer: null,
     correctInterval: "",
@@ -30,14 +31,22 @@ const ExercisePage: React.FC = () => {
     setCounter(counter + 1);
   };
 
-  const generateAuralExercise = function () {
-    return "m2";
+  const generateInterval = function () {
+    return { firstNote: "E4", secondNote: "F4", interval: "m2" };
+  };
+
+  const playAuralExercise = function () {
+    const synth = new Tone.Synth().toDestination();
+    const now = Tone.now();
+    const firstNote = generateInterval().firstNote;
+    const secondNote = generateInterval().secondNote;
+    synth.triggerAttackRelease(firstNote, "4n", now);
+    synth.triggerAttackRelease(secondNote, "4n", now + 1);
   };
 
   const checkAnswer = function (event: React.MouseEvent) {
-    const correctInterval = generateAuralExercise();
+    const correctInterval = generateInterval().interval;
     const userInterval = event.currentTarget.textContent;
-
     const correctAnswer = correctInterval === userInterval ? true : false;
 
     setAnswerState({
@@ -72,7 +81,10 @@ const ExercisePage: React.FC = () => {
     <main className="container">
       <div>
         <div className="exercise">
-          <Exercise exercise={exerciseType} />
+          <Exercise
+            exercise={exerciseType}
+            playAuralExercise={playAuralExercise}
+          />
         </div>
         <div className="counter">
           <Counter counter={counter} />
