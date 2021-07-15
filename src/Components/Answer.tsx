@@ -6,14 +6,14 @@ type AnswerProps = {
 };
 
 const Answer: React.FC<AnswerProps> = ({ answer, newExercise }) => {
-  const marked = answer ? "You are correct!" : "Nope";
+  const marked = answer ? "Correct!" : "Incorrect";
 
   return (
     <div>
-      <div>{marked}</div>
+      <h1>{marked}</h1>
       {/* <Button variant="contained">Repeat the exercise</Button> */}
       <Button onClick={newExercise} variant="contained">
-        New exercise
+        Next exercise
       </Button>
     </div>
   );
