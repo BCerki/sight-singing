@@ -17,24 +17,22 @@ const _ = require("lodash");
 //state interfaces
 interface AnswerState {
   display: boolean;
-  correctInterval: any;
-  userInterval: string | null;
-  correctAnswer: boolean | null;
+  userAnswer: string | null;
+  isCorrect: boolean | null;
 }
 
 interface IntervalState {
   firstNote: string;
   secondNote: string;
-  interval: string | ((to: string) => string); //because TS made me
+  interval: string;
 }
 
 const ExercisePage: React.FC = () => {
   //answer state
   const initialAnswerState: AnswerState = {
     display: false,
-    correctInterval: "",
-    userInterval: "",
-    correctAnswer: null,
+    userAnswer: "",
+    isCorrect: null,
   };
 
   const [answerState, setAnswerState] = useState(initialAnswerState);
@@ -107,11 +105,13 @@ const ExercisePage: React.FC = () => {
       equivalentInterval = formattedInterval;
   }
 
-  const intervalState: IntervalState = {
+  const newIntervalState: IntervalState = {
     firstNote,
     secondNote,
     interval: equivalentInterval,
   };
+
+  const [intervalState, setIntervalState] = useState(newIntervalState);
   //counter state
   const [counter, setCounter] = useState(0);
 
@@ -143,9 +143,8 @@ const ExercisePage: React.FC = () => {
 
     setAnswerState({
       display: true,
-      correctAnswer: correctAnswer,
-      correctInterval: correctInterval,
-      userInterval: userInterval,
+      isCorrect: correctAnswer,
+      userAnswer: userInterval,
     });
 
     if (correctAnswer) {
@@ -155,6 +154,7 @@ const ExercisePage: React.FC = () => {
 
   const newExercise = function () {
     setAnswerState(initialAnswerState);
+    setIntervalState(newIntervalState);
   };
 
   //choose which exercise type to display
@@ -164,8 +164,8 @@ const ExercisePage: React.FC = () => {
   if (answerState.display) {
     return (
       <Answer
-        correctAnswer={answerState.correctAnswer}
-        correctInterval={answerState.correctInterval}
+        correctAnswer={answerState.isCorrect}
+        interval={intervalState.interval}
         firstNote={intervalState.firstNote}
         secondNote={intervalState.secondNote}
         newExercise={newExercise}
