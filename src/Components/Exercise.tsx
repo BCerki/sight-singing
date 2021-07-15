@@ -8,7 +8,9 @@ const Exercise: React.FC<ExerciseProps> = ({ exercise }) => {
   if (exercise === "/aural") {
     return <Button variant="contained">Play Interval</Button>;
   }
-
-  return <div>I am a placeholder</div>;
+  if (exercise === "/visual") {
+    return <div>I am a placeholder for the visual component</div>;
+  }
+  return <div>I am a placeholder for the sing component</div>;
 };
 export default Exercise;
