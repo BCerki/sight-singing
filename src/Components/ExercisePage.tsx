@@ -28,6 +28,7 @@ const ExercisePage: React.FC = () => {
     // check if answer is right
     if (generateAuralExercise() === answer) {
       setCorrectAnswer(true);
+      increment();
       return true;
     }
     setCorrectAnswer(false);
