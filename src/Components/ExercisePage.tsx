@@ -8,7 +8,7 @@ import "./ExercisePage.css";
 
 const ExercisePage: React.FC = () => {
   const [counter, setCounter] = useState(0);
-  const [displayExercise, setDisplayExercise] = useState(true);
+  const [displayAnswer, setDisplayAnswer] = useState(false);
   const [correctAnswer, setCorrectAnswer] = useState(true);
 
   const increment = function () {
@@ -21,7 +21,7 @@ const ExercisePage: React.FC = () => {
 
   const checkAnswer = function (event: React.MouseEvent) {
     //change from displaying exercise to displaying answer
-    setDisplayExercise(false);
+    setDisplayAnswer(true);
     //grab clicked button value
     const answer = event.currentTarget.textContent;
 
@@ -36,20 +36,19 @@ const ExercisePage: React.FC = () => {
   };
 
   const newExercise = function () {
-    setDisplayExercise(true);
+    setDisplayAnswer(false);
   };
 
   const exerciseProp = "aural"; //this will be how we select which one to show?
 
+  if (displayAnswer) {
+    return <Answer answer={correctAnswer} newExercise={newExercise} />;
+  }
   return (
     <main className="container">
       <div>
-        <div className="answer">
-          {displayExercise ? (
-            <Exercise exercise={exerciseProp} />
-          ) : (
-            <Answer answer={correctAnswer} newExercise={newExercise} />
-          )}
+        <div className="exercise">
+          <Exercise exercise={exerciseProp} />
         </div>
         <div className="counter">
           <Counter counter={counter} />
