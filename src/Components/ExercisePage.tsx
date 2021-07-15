@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import IntervalButtonGroup from "./IntervalButtonGroup";
 import Counter from "./Counter";
 import Exercise from "./Exercise";
@@ -38,8 +39,8 @@ const ExercisePage: React.FC = () => {
   const newExercise = function () {
     setDisplayAnswer(false);
   };
-
-  const exerciseProp = "aural"; //this will be how we select which one to show?
+  const location = useLocation();
+  const exerciseType = location.pathname;
 
   if (displayAnswer) {
     return <Answer answer={correctAnswer} newExercise={newExercise} />;
@@ -48,7 +49,7 @@ const ExercisePage: React.FC = () => {
     <main className="container">
       <div>
         <div className="exercise">
-          <Exercise exercise={exerciseProp} />
+          <Exercise exercise={exerciseType} />
         </div>
         <div className="counter">
           <Counter counter={counter} />
