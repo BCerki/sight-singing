@@ -21,12 +21,39 @@ interface AnswerState {
   correctAnswer: boolean | null;
 }
 
+interface IntervalState {
+  firstNote: string;
+  secondNote: string;
+  interval: string | ((to: string) => string); //because TS made me
+}
+
 const ExercisePage: React.FC = () => {
+  //answer state
   const initialAnswerState: AnswerState = {
     display: false,
     correctInterval: "",
     userInterval: "",
     correctAnswer: null,
+  };
+  //interval state
+  const octave: number = _.sample(_.range(2, 6));
+
+  const firstNote =
+    _.sample(["A", "B", "C", "D", "E", "F", "G"]) +
+    _.sample(["b", "#", ""]) +
+    octave;
+
+  const secondNote =
+    _.sample(["A", "B", "C", "D", "E", "F", "G"]) +
+    _.sample(["b", "#", ""]) +
+    octave;
+
+  const interval = Distance.interval(firstNote, secondNote);
+
+  const intervalState: IntervalState = {
+    firstNote,
+    secondNote,
+    interval,
   };
 
   const [answerState, setAnswerState] = useState(initialAnswerState);
@@ -37,28 +64,10 @@ const ExercisePage: React.FC = () => {
     setCounter(counter + 1);
   };
 
-  const generateInterval = function () {
-    const octave: number = _.sample(_.range(2, 6));
-
-    const firstNote =
-      _.sample(["A", "B", "C", "D", "E", "F", "G"]) +
-      _.sample(["b", "#", ""]) +
-      octave;
-
-    const secondNote =
-      _.sample(["A", "B", "C", "D", "E", "F", "G"]) +
-      _.sample(["b", "#", ""]) +
-      octave;
-
-    const interval = Distance.interval(firstNote, secondNote);
-
-    return { firstNote, secondNote, interval };
-  };
-
   const playAuralExercise = function () {
     const synth = new Tone.Synth().toDestination();
     const now = Tone.now();
-    const { firstNote, secondNote, interval } = generateInterval();
+    const { firstNote, secondNote, interval } = intervalState;
 
     console.log(
       "first note",
@@ -73,7 +82,7 @@ const ExercisePage: React.FC = () => {
   };
 
   const checkAnswer = function (event: React.MouseEvent) {
-    const correctInterval = generateInterval().interval;
+    const correctInterval = intervalState.interval;
     const userInterval = event.currentTarget.textContent;
     const correctAnswer = correctInterval === userInterval ? true : false;
 
