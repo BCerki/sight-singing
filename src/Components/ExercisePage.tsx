@@ -9,17 +9,29 @@ import "./ExercisePage.css";
 const ExercisePage: React.FC = () => {
   const [counter, setCounter] = useState(0);
   const [displayExercise, setDisplayExercise] = useState(true);
+  const [correctAnswer, setCorrectAnswer] = useState(true);
 
   const increment = function () {
     setCounter(counter + 1);
   };
 
-  const checkAnswer = function (event: React.MouseEvent) {
-    const target = event.target as HTMLButtonElement;
-    if (target) console.log("target.value is", target.value);
+  const generateAuralExercise = function () {
+    return "m2";
+  };
 
+  const checkAnswer = function (event: React.MouseEvent) {
     //change from displaying exercise to displaying answer
     setDisplayExercise(false);
+    //grab clicked button value
+    const answer = event.currentTarget.textContent;
+
+    // check if answer is right
+    if (generateAuralExercise() === answer) {
+      setCorrectAnswer(true);
+      return true;
+    }
+    setCorrectAnswer(false);
+    return false;
   };
 
   const newExercise = function () {
@@ -36,7 +48,7 @@ const ExercisePage: React.FC = () => {
         {displayExercise ? (
           <Exercise exercise="testexercise" />
         ) : (
-          <Answer answer="true" newExercise={newExercise} />
+          <Answer answer={correctAnswer} newExercise={newExercise} />
         )}
       </div>
       <div className="intervalButtons">

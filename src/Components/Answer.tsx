@@ -1,7 +1,7 @@
 import Button from "@material-ui/core/Button";
 
 type AnswerProps = {
-  answer: string;
+  answer: boolean;
   newExercise: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
