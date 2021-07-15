@@ -6,14 +6,14 @@ type ExerciseProps = {
 };
 
 const Exercise: React.FC<ExerciseProps> = ({ exercise, playAuralExercise }) => {
-  if (exercise === "/aural") {
+  if (exercise === "aural") {
     return (
       <Button variant="contained" onClick={playAuralExercise}>
         Play Interval
       </Button>
     );
   }
-  if (exercise === "/visual") {
+  if (exercise === "visual") {
     return <div>I am a placeholder for the visual component</div>;
   }
   return <div>I am a placeholder for the sing component</div>;

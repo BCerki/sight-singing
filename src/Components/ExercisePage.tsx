@@ -159,7 +159,7 @@ const ExercisePage: React.FC = () => {
 
   //choose which exercise type to display
   const location = useLocation();
-  const exerciseType = location.pathname;
+  const exerciseType: string = location.pathname.slice(1);
 
   if (answerState.display) {
     return (
@@ -180,7 +180,7 @@ const ExercisePage: React.FC = () => {
           />
         </div>
         <div className="counter">
-          <Counter counter={counter} />
+          <Counter counter={counter} exercise={exerciseType} />
         </div>
       </div>
       <div className="intervalButtons">
