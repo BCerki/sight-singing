@@ -9,6 +9,8 @@ import * as Tone from "tone";
 //music theory
 import { Note, Interval, Distance, Scale, Chord } from "tonal";
 import Vex from 'vexflow';
+// import SheetMusic from '@slnsw/react-sheet-music';  
+
 
 import "./ExercisePage.css";
 
@@ -216,22 +218,25 @@ const ExercisePage: React.FC = () => {
   };
 
   const showVisualExercise = function () {
+    const VF = Vex.Flow;
 
-    const vf = new Vex.Flow.Factory({
+    const vf = new VF.Factory({
       renderer: {elementId: 'boo', width: 500, height: 200}
     });
-    
+
     const score = vf.EasyScore();
     const system = vf.System();
-    
+
     system.addStave({
       voices: [
-        score.voice(score.notes('C#5/q, B4, A4, G#4', {stem: 'up'})),
-        score.voice(score.notes('C#4/h, C#4', {stem: 'down'}))
+        score.voice(score.notes('C#5/q, B4, A4, G#4', {stem: 'up'}), score.options)
       ]
     }).addClef('treble').addTimeSignature('4/4');
-    
+
     vf.draw();
+
+    return <div id="boo"></div>
+
   }
 
   const checkAnswer = function (event: React.MouseEvent) {

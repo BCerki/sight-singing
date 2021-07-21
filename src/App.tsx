@@ -9,6 +9,7 @@ function App() {
       <header className="App-header"></header>
       <div>
         <h1>Exercise page below</h1>
+        <div className="font-face-mq">'&4=</div>
         <ExercisePage />
       </div>
       <Landing />

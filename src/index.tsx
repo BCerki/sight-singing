@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { BrowserRouter as Router } from "react-router-dom";
+import './fonts/Musiqwik-rvL8.ttf';
 
 
 ReactDOM.render(

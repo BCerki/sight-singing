@@ -1,9 +1,10 @@
+import { FC } from 'react'
 import Button from "@material-ui/core/Button";
 
 type ExerciseProps = {
   exercise: string;
   playAuralExercise: () => void;
-  showVisualExercise: () => void;
+  showVisualExercise: FC;
 };
 
 const Exercise: React.FC<ExerciseProps> = ({ exercise, playAuralExercise, showVisualExercise }) => {
@@ -15,7 +16,7 @@ const Exercise: React.FC<ExerciseProps> = ({ exercise, playAuralExercise, showVi
     );
   }
   if (exercise === "visual") {
-    return <div>{showVisualExercise}</div>;
+    return <div>'&</div>;
   }
   return <div>I am a placeholder for the sing component</div>;
 };

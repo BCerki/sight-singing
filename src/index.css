@@ -1,3 +1,10 @@
+@font-face {
+  font-family: "Musiqwik";
+  src: local("Musiqwik"),
+   url("./fonts/Musiqwik-rvL8.ttf") format("truetype");
+  font-weight: normal;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
