@@ -8,8 +8,6 @@ import Answer from "./Answer";
 import * as Tone from "tone";
 //music theory
 import { Note, Interval, Distance, Scale, Chord } from "tonal";
-import Vex from 'vexflow';
-// import SheetMusic from '@slnsw/react-sheet-music';  
 
 
 import "./ExercisePage.css";
@@ -218,24 +216,11 @@ const ExercisePage: React.FC = () => {
   };
 
   const showVisualExercise = function () {
-    const VF = Vex.Flow;
 
-    const vf = new VF.Factory({
-      renderer: {elementId: 'boo', width: 500, height: 200}
-    });
-
-    const score = vf.EasyScore();
-    const system = vf.System();
-
-    system.addStave({
-      voices: [
-        score.voice(score.notes('C#5/q, B4, A4, G#4', {stem: 'up'}), score.options)
-      ]
-    }).addClef('treble').addTimeSignature('4/4');
-
-    vf.draw();
-
-    return <div id="boo"></div>
+    return {
+      firstNote: 'c',
+      secondNote: 'd'
+    }
 
   }
 
@@ -282,7 +267,7 @@ const ExercisePage: React.FC = () => {
           <Exercise
             exercise={exerciseType}
             playAuralExercise={playAuralExercise}
-            showVisualExercise={showVisualExercise}
+            showVisualExercise={showVisualExercise()}
           />
         </div>
         <div className="counter">
