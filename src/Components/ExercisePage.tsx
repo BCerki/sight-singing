@@ -217,9 +217,14 @@ const ExercisePage: React.FC = () => {
 
   const showVisualExercise = function () {
 
+    console.log({
+      firstNote: firstNote.substring(0, 2),
+      secondNote: secondNote.substring(0, 2)
+    });
+
     return {
-      firstNote: 'c',
-      secondNote: 'd'
+      firstNote: firstNote.substring(0, 1),
+      secondNote: secondNote.substring(0, 1)
     }
 
   }

@@ -22,7 +22,9 @@ const Exercise: React.FC<ExerciseProps> = ({ exercise, playAuralExercise, showVi
     );
   }
   if (exercise === "visual") {
-    return <div className="font-face-mq">{`'&=${showVisualExercise.firstNote}==${showVisualExercise.secondNote}`}</div>
+    const {firstNote, secondNote} = showVisualExercise;
+    // Uses musiqwik font symbols to display treble clef notes, with the two intervals as variables.
+    return <div className="font-face-mq">{`'&=${firstNote}==${secondNote}=.`}</div>
   }
   return <div>I am a placeholder for the sing component</div>;
 };
