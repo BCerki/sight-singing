@@ -203,11 +203,11 @@ const ExercisePage: React.FC = () => {
     const { firstNote, secondNote, interval } = intervalState;
 
     console.log(
-      "first note",
+      "first note is:",
       firstNote,
-      "second note",
+      "second note is:",
       secondNote,
-      "interval",
+      "interval is:",
       interval
     );
     synth.triggerAttackRelease(firstNote, "4n", now);
