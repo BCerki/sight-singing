@@ -38,17 +38,95 @@ const ExercisePage: React.FC = () => {
   const [answerState, setAnswerState] = useState(initialAnswerState);
 
   //interval state
-  const octave: number = _.sample(_.range(2, 6));
+  const notes = [
+    "Ab3",
+    "A3",
+    "A#3",
+    "Bb3",
+    "B3",
+    "B#3",
+    "Cb3",
+    "C3",
+    "C#3",
+    "Db3",
+    "D3",
+    "D#3",
+    "Eb3",
+    "E3",
+    "E#3",
+    "Fb3",
+    "F3",
+    "F#3",
+    "Gb3",
+    "G3",
+    "G#3",
+    "Ab4",
+    "A4",
+    "A#4",
+    "Bb4",
+    "B4",
+    "B#4",
+    "Cb4",
+    "C4",
+    "C#4",
+    "Db4",
+    "D4",
+    "D#4",
+    "Eb4",
+    "E4",
+    "E#4",
+    "Fb4",
+    "F4",
+    "F#4",
+    "Gb4",
+    "G4",
+    "G#4",
+    "Ab5",
+    "A5",
+    "A#5",
+    "Bb5",
+    "B5",
+    "B#5",
+    "Cb5",
+    "C5",
+    "C#5",
+    "Db5",
+    "D5",
+    "D#5",
+    "Eb5",
+    "E5",
+    "E#5",
+    "Fb5",
+    "F5",
+    "F#5",
+    "Gb5",
+    "G5",
+    "G#5",
+  ];
 
-  const firstNote =
-    _.sample(["A", "B", "C", "D", "E", "F", "G"]) +
-    _.sample(["b", "#", ""]) +
-    octave;
+  const firstNoteIndex: number = _.sample(_.range(notes.length - 1));
+  const firstNote = notes[firstNoteIndex];
 
-  const secondNote =
-    _.sample(["A", "B", "C", "D", "E", "F", "G"]) +
-    _.sample(["b", "#", ""]) +
-    octave;
+  const getSecondNoteIndex = function (
+    firstNoteIndex: number,
+    notesArray: string[]
+  ) {
+    let secIndex: undefined | number = undefined;
+    while (!secIndex || secIndex < 0 || secIndex > notesArray.length) {
+      secIndex = firstNoteIndex + _.sample(_.range(-22, 22)); //22 keeps the interval from being larger than a P8
+    }
+
+    return secIndex;
+  };
+
+  const secondNoteIndex = getSecondNoteIndex(firstNoteIndex, notes);
+  const secondNote = notes[secondNoteIndex];
+  // console.log(
+  //   "getSecondNoteIndex is",
+  //   secondNoteIndex,
+  //   "secondNote is",
+  //   secondNote
+  // );
 
   const interval = Distance.interval(firstNote, secondNote);
   //reformat and simplify Tonal's intervals to our button ones
