@@ -1,4 +1,4 @@
-import ExercisePage from "./Components/ExercisePage";
+// import ExercisePage from "./Components/ExercisePage";
 import "./App.css";
 import Landing from './Components/Landing';
 
@@ -8,9 +8,6 @@ function App() {
     <div className="App">
       <header className="App-header"></header>
       <Landing />
-      <div>
-        <ExercisePage />
-      </div>
     </div>
   )
 }
