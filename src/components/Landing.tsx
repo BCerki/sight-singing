@@ -5,7 +5,6 @@ import Sing from './Sing'
 import { AppBar, Toolbar, Typography, Button } from '@material-ui/core';
 import IntervalCard from "./IntervalCard";
 import Grid from '@material-ui/core/Grid'
-
 import './Landing.css'
 
 function Landing() {
@@ -43,7 +42,7 @@ function Landing() {
       <main className="App-main">
         <Switch>
           <Route path="/visual">
-            <Visual />
+            < Visual />
           </Route>
 
           <Route path="/aural">

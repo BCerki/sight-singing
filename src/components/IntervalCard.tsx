@@ -44,11 +44,6 @@ const IntervalCard:FC<CardProps> = ({ title, image, imageTitle, description }): 
           </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-      <Button size="small" color="primary">
-          Try it out
-        </Button>
-      </CardActions>
     </Card>
   );
 }
