@@ -215,16 +215,77 @@ const ExercisePage: React.FC = () => {
     synth.triggerAttackRelease(secondNote, "4n", now + 1);
   };
 
-  const showVisualExercise = function () {
+  const musiqwikMap = (note: string) => {
 
-    console.log({
-      firstNote: firstNote.substring(0, 2),
-      secondNote: secondNote.substring(0, 2)
+    let formatedNote = '';
+    switch (note) {
+      case 'A':
+        formatedNote = '@';
+      break;
+      case 'A#':
+        formatedNote = 'Ð@';
+      break;
+      case 'Bb':
+        formatedNote = 'áA';
+      break;
+      case 'B':
+        formatedNote = 'A';
+      break;
+      case 'C':
+        formatedNote = 'B';
+      break;
+      case 'C#':
+        formatedNote = 'ÒB';
+      break;
+      case 'Db':
+        formatedNote = 'ãC';
+      break;
+      case 'D':
+        formatedNote = 'C';
+      break;
+      case 'D#':
+        formatedNote = 'ÓC';
+      break;
+      case 'Eb':
+        formatedNote = 'äD';
+      break;
+      case 'E':
+        formatedNote = 'D';
+      break;
+      case 'F':
+        formatedNote = 'E';
+      break;
+      case 'F#':
+        formatedNote = 'ÕE';
+      break;
+      case 'Gb':
+        formatedNote = 'æF';
+      break;
+      case 'G':
+        formatedNote = 'F';
+      break;
+      case 'G#':
+        formatedNote = 'ÖF';
+      break;
+
+    }
+
+    return formatedNote;
+  }
+  const showVisualExercise = function () {
+    let formatedFirstNote = musiqwikMap(firstNote.substring(0, firstNote.length - 1));
+    let formatedSecondNote = musiqwikMap(secondNote.substring(0, secondNote.length - 1));
+
+    console.log('before formatting', firstNote, secondNote);
+
+    console.log('after formatting', {
+      firstNote: formatedFirstNote,
+      secondNote: formatedSecondNote
     });
 
     return {
-      firstNote: firstNote.substring(0, 1),
-      secondNote: secondNote.substring(0, 1)
+      firstNote: formatedFirstNote,
+      secondNote: formatedSecondNote
     }
 
   }
