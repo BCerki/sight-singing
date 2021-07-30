@@ -1,3 +1,20 @@
+#landing {
+  display: flex;
+  justify-content: space-around;
+  align-items: space-between;
+  flex-direction: column;
+}
+
+.App-main {
+  margin-top: 8rem;
+  margin-bottom: 8rem;
+}
+
+.home {
+  text-decoration: none;
+  color: black;
+}
+
 .cards {
   display: flex;
   justify-content: space-between;
