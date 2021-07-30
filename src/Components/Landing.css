@@ -10,6 +10,10 @@
   margin-bottom: 8rem;
 }
 
+#toolbar {
+  color: black;
+}
+
 .home {
   text-decoration: none;
   color: black;

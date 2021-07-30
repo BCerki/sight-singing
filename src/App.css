@@ -1,3 +1,5 @@
 .App {
   text-align: center;
+  background: rgb(37,189,203);
+  background: linear-gradient(90deg, rgba(37,189,203,0.2847514005602241) 44%, rgba(2,0,36,1) 100%, rgba(0,212,255,1) 100%);
 }
