@@ -9,6 +9,7 @@ import * as Tone from "tone";
 //music theory
 import { Note, Interval, Distance, Scale, Chord } from "tonal";
 
+
 import "./ExercisePage.css";
 
 //lodash array methods
@@ -214,6 +215,141 @@ const ExercisePage: React.FC = () => {
     synth.triggerAttackRelease(secondNote, "4n", now + 1);
   };
 
+  const musiqwikMap = (note: string) => {
+
+    let formatedNote = '';
+    switch (note) {
+      case 'A3':
+        formatedNote = '@';
+      break;
+      case 'A#3':
+        formatedNote = 'Ð@';
+      break;
+      case 'Bb3':
+        formatedNote = 'áA';
+      break;
+      case 'B3':
+        formatedNote = 'A';
+      break;
+      case 'C4':
+        formatedNote = 'B';
+      break;
+      case 'C#4':
+        formatedNote = 'ÒB';
+      break;
+      case 'Db4':
+        formatedNote = 'ãC';
+      break;
+      case 'D4':
+        formatedNote = 'C';
+      break;
+      case 'D#4':
+        formatedNote = 'ÓC';
+      break;
+      case 'Eb4':
+        formatedNote = 'äD';
+      break;
+      case 'E4':
+        formatedNote = 'D';
+      break;
+      case 'F4':
+        formatedNote = 'E';
+      break;
+      case 'F#4':
+        formatedNote = 'ÕE';
+      break;
+      case 'Gb4':
+        formatedNote = 'æF';
+      break;
+      case 'G4':
+        formatedNote = 'F';
+      break;
+      case 'G#4':
+        formatedNote = 'ÖF';
+      break;
+      case 'Ab4':
+        formatedNote = 'çG';
+      break;
+      case 'A4':
+        formatedNote = 'G';
+      break;
+      case 'A#4':
+        formatedNote = '×G';
+      break;
+      case 'Bb4':
+        formatedNote = 'èH';
+      break;
+      case 'B4':
+        formatedNote = 'H';
+      break;
+      case 'c5':
+        formatedNote = 'I';
+      break;
+      case 'c#5':
+        formatedNote = 'ÙI';
+      break;
+      case 'Db5':
+        formatedNote = 'êJ';
+      break;
+      case 'D5':
+        formatedNote = 'J';
+      break;
+      case 'D#5':
+        formatedNote = 'ÚJ';
+      break;
+      case 'Eb5':
+        formatedNote = 'ëK';
+      break;
+      case 'E5':
+        formatedNote = 'K';
+      break;
+      case 'F5':
+        formatedNote = 'L';
+      break;
+      case 'F#5':
+        formatedNote = 'ÜL';
+      break;
+      case 'Gb5':
+        formatedNote = 'íM';
+      break;
+      case 'G5':
+        formatedNote = 'M';
+      break;
+      case 'G#5':
+        formatedNote = 'ÝM';
+      break;
+      case 'Ab5':
+        formatedNote = 'îN';
+      break;
+      case 'A5':
+        formatedNote = 'N';
+      break;
+      case 'A#5':
+        formatedNote = 'ÞN';
+      break;
+
+    }
+
+    return formatedNote;
+  }
+  const showVisualExercise = function () {
+    let formatedFirstNote = musiqwikMap(firstNote);
+    let formatedSecondNote = musiqwikMap(secondNote);
+
+    console.log('before formatting', firstNote, secondNote);
+
+    console.log('after formatting', {
+      firstNote: formatedFirstNote,
+      secondNote: formatedSecondNote
+    });
+
+    return {
+      firstNote: formatedFirstNote,
+      secondNote: formatedSecondNote
+    }
+
+  }
+
   const checkAnswer = function (event: React.MouseEvent) {
     const correctInterval = intervalState.interval;
     const userInterval = event.currentTarget.textContent;
@@ -257,6 +393,7 @@ const ExercisePage: React.FC = () => {
           <Exercise
             exercise={exerciseType}
             playAuralExercise={playAuralExercise}
+            showVisualExercise={showVisualExercise()}
           />
         </div>
         <div className="counter">
