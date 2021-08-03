@@ -44,7 +44,7 @@ const ExercisePage: React.FC = () => {
     "A#3",
     "Bb3",
     "B3",
-    "B#3",
+
     "Cb3",
     "C3",
     "C#3",
@@ -53,7 +53,7 @@ const ExercisePage: React.FC = () => {
     "D#3",
     "Eb3",
     "E3",
-    "E#3",
+
     "Fb3",
     "F3",
     "F#3",
@@ -65,7 +65,7 @@ const ExercisePage: React.FC = () => {
     "A#4",
     "Bb4",
     "B4",
-    "B#4",
+
     "Cb4",
     "C4",
     "C#4",
@@ -74,7 +74,7 @@ const ExercisePage: React.FC = () => {
     "D#4",
     "Eb4",
     "E4",
-    "E#4",
+
     "Fb4",
     "F4",
     "F#4",
@@ -86,7 +86,7 @@ const ExercisePage: React.FC = () => {
     "A#5",
     "Bb5",
     "B5",
-    "B#5",
+
     "Cb5",
     "C5",
     "C#5",
@@ -95,7 +95,7 @@ const ExercisePage: React.FC = () => {
     "D#5",
     "Eb5",
     "E5",
-    "E#5",
+
     "Fb5",
     "F5",
     "F#5",
