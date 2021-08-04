@@ -1,17 +1,15 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
-import IntervalButtonGroup from "./IntervalButtonGroup";
-import Counter from "./Counter";
-import Exercise from "./Exercise";
-import Answer from "./Answer";
 //playing sound
 import * as Tone from "tone";
-//music theory
-// import { Interval, Distance, Scale, Chord } from "tonal";
-import { Note } from "@tonaljs/tonal";
-
+//components
+import Answer from "./Answer";
+import Counter from "./Counter";
+import Exercise from "./Exercise";
+import IntervalButtonGroup from "./IntervalButtonGroup";
+//styles
 import "./ExercisePage.css";
-
+//helpers
 import exercise from "../Helpers/createExercise";
 const { firstNote, secondNote, interval } = exercise;
 
