@@ -1,5 +1,6 @@
 //interval calculation
-import { Note } from "@tonaljs/tonal";
+import { Note, Interval } from "@tonaljs/tonal";
+import { allowedNodeEnvironmentFlags } from "process";
 
 //lodash array methods
 const _ = require("lodash");
@@ -11,6 +12,7 @@ const notes = [
   "A#3",
   "Bb3",
   "B3",
+  "B#3",
   "Cb3",
   "C3",
   "C#3",
@@ -19,6 +21,7 @@ const notes = [
   "D#3",
   "Eb3",
   "E3",
+  "E#3",
   "Fb3",
   "F3",
   "F#3",
@@ -30,6 +33,7 @@ const notes = [
   "A#4",
   "Bb4",
   "B4",
+  "B#4",
   "Cb4",
   "C4",
   "C#4",
@@ -38,6 +42,7 @@ const notes = [
   "D#4",
   "Eb4",
   "E4",
+  "E#4",
   "Fb4",
   "F4",
   "F#4",
@@ -49,6 +54,7 @@ const notes = [
   "A#5",
   "Bb5",
   "B5",
+  "B#5",
   "Cb5",
   "C5",
   "C#5",
@@ -57,6 +63,7 @@ const notes = [
   "D#5",
   "Eb5",
   "E5",
+  "E#5",
   "Fb5",
   "F5",
   "F#5",
@@ -81,22 +88,54 @@ const intervals = [
   "P8",
 ];
 
-const firstNoteIndex: number = _.sample(_.range(notes.length - 1));
-const firstNote = notes[firstNoteIndex];
+const listAscending = function () {
+  const allAscending = [];
+  //create an object for each possible ascending interval from our chosen notes
+  for (const note of notes) {
+    for (const interval of intervals) {
+      allAscending.push({
+        firstNote: note,
+        interval: interval,
+        secondNote: Note.transpose(note, interval),
+      });
+    }
+  }
+  //remove anything higher than B#5
+  const cleanedAllAscending = allAscending.filter(
+    (element) =>
+      Number(element.secondNote.slice(element.secondNote.length - 1)) < 6
+  );
 
-const intervalIndex: number = _.sample(_.range(intervals.length - 1));
-const interval = intervals[intervalIndex];
-
-const restrictSecondNote = function () {
-  //need to add descending and make sure it doesn't go outside our range
+  return cleanedAllAscending;
 };
+console.log(listAscending());
 
-const secondNote = Note.transpose(firstNote, interval);
+const listDescending = function () {
+  const allDescending = [];
+  //create an object for each possible descending interval from our chosen notes
+  for (const note of notes) {
+    for (const interval of intervals) {
+      allDescending.push({
+        firstNote: Note.transpose(note, interval),
+        interval: Interval.invert(interval),
+        secondNote: note,
+      });
+    }
+  }
+  //this isn't working yet
+  return allDescending;
+};
+// console.log(listDescending());
 
-//tonal only does ascending, so randomly rearrange first and second notes to get both in exercises
-const exercise =
-  _.sample(_.range(6)) > 3
-    ? { firstNote, secondNote, interval }
-    : { firstNote: secondNote, secondNote: firstNote, interval };
+// const firstNoteIndex: number = _.sample(_.range(notes.length - 1));
+// const firstNote = notes[firstNoteIndex];
 
-export default exercise;
+// const intervalIndex: number = _.sample(_.range(intervals.length - 1));
+// const interval = intervals[intervalIndex];
+
+// const secondNote = Note.transpose(firstNote, interval);
+
+const exercise = _.sample(listAscending());
+// console.log(exercise);
+
+export default listAscending;

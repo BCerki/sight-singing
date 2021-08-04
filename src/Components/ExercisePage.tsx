@@ -10,11 +10,13 @@ import IntervalButtonGroup from "./IntervalButtonGroup";
 //styles
 import "./ExercisePage.css";
 //helpers
-import exercise from "../Helpers/createExercise";
-const { firstNote, secondNote, interval } = exercise;
+import listAscending from "../Helpers/createExercise";
 
 //lodash array methods
 const _ = require("lodash");
+
+const exercise = _.sample(listAscending());
+const { firstNote, secondNote, interval } = exercise;
 
 //state interfaces
 interface AnswerState {
@@ -39,12 +41,13 @@ const ExercisePage: React.FC = () => {
   const [answerState, setAnswerState] = useState(initialAnswerState);
 
   //interval state
-  const newIntervalState: IntervalState = {
+  const initialIntervalState: IntervalState = {
     firstNote,
     secondNote,
     interval,
   };
-  const [intervalState, setIntervalState] = useState(newIntervalState);
+  const [intervalState, setIntervalState] = useState(initialIntervalState);
+  console.log("interval state is", intervalState);
 
   //counter state
   const [counter, setCounter] = useState(0);
@@ -89,6 +92,17 @@ const ExercisePage: React.FC = () => {
   };
 
   const newExercise = function () {
+    console.log("new exercise is firing");
+
+    const newExercise = _.sample(listAscending());
+    console.log("newExercise", newExercise);
+    const { firstNote, secondNote, interval } = newExercise;
+
+    const newIntervalState: IntervalState = {
+      firstNote,
+      secondNote,
+      interval,
+    };
     setAnswerState(initialAnswerState);
     setIntervalState(newIntervalState);
   };
