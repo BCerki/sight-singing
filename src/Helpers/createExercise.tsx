@@ -100,15 +100,18 @@ const listAscending = function () {
       });
     }
   }
-  //remove anything higher than B#5
-  const cleanedAllAscending = allAscending.filter(
+  //remove anything in octaves < 4 and > 6
+  const cleaned = allAscending.filter(
     (element) =>
-      Number(element.secondNote.slice(element.secondNote.length - 1)) < 6
+      Number(element.secondNote.slice(element.secondNote.length - 1)) > 4 &&
+      Number(element.secondNote.slice(element.secondNote.length - 1)) < 6 &&
+      Number(element.firstNote.slice(element.firstNote.length - 1)) > 4 &&
+      Number(element.firstNote.slice(element.firstNote.length - 1)) < 6
   );
 
-  return cleanedAllAscending;
+  return cleaned;
 };
-console.log(listAscending());
+console.log("listAscening is:", listAscending());
 
 const listDescending = function () {
   const allDescending = [];
@@ -117,15 +120,24 @@ const listDescending = function () {
     for (const interval of intervals) {
       allDescending.push({
         firstNote: Note.transpose(note, interval),
-        interval: Interval.invert(interval),
+        interval: interval,
         secondNote: note,
       });
     }
   }
-  //this isn't working yet
-  return allDescending;
+
+  //remove anything in octaves < 4 and > 6
+  const cleaned = allDescending.filter(
+    (element) =>
+      Number(element.secondNote.slice(element.secondNote.length - 1)) > 4 &&
+      Number(element.secondNote.slice(element.secondNote.length - 1)) < 6 &&
+      Number(element.firstNote.slice(element.firstNote.length - 1)) > 4 &&
+      Number(element.firstNote.slice(element.firstNote.length - 1)) < 6
+  );
+
+  return cleaned;
 };
-// console.log(listDescending());
+console.log("list descending is", listDescending());
 
 // const firstNoteIndex: number = _.sample(_.range(notes.length - 1));
 // const firstNote = notes[firstNoteIndex];
@@ -135,7 +147,13 @@ const listDescending = function () {
 
 // const secondNote = Note.transpose(firstNote, interval);
 
-const exercise = _.sample(listAscending());
-// console.log(exercise);
+const listAll = listAscending().concat(listDescending());
 
-export default listAscending;
+console.log("list all is", listAll);
+
+const exercise = function () {
+  return _.sample(listAll);
+};
+console.log("exercise is", exercise());
+
+export default exercise;

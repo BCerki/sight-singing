@@ -10,13 +10,14 @@ import IntervalButtonGroup from "./IntervalButtonGroup";
 //styles
 import "./ExercisePage.css";
 //helpers
-import listAscending from "../Helpers/createExercise";
+import exercise from "../Helpers/createExercise";
 
 //lodash array methods
 const _ = require("lodash");
 
-const exercise = _.sample(listAscending());
-const { firstNote, secondNote, interval } = exercise;
+console.log("exercise in exercisepage is", exercise());
+
+const { firstNote, secondNote, interval } = exercise();
 
 //state interfaces
 interface AnswerState {
@@ -94,7 +95,7 @@ const ExercisePage: React.FC = () => {
   const newExercise = function () {
     console.log("new exercise is firing");
 
-    const newExercise = _.sample(listAscending());
+    const newExercise = exercise();
     console.log("newExercise", newExercise);
     const { firstNote, secondNote, interval } = newExercise;
 
