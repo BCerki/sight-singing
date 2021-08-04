@@ -24,7 +24,7 @@ interface AnswerState {
 interface IntervalState {
   firstNote: string;
   secondNote: string;
-  interval: string;
+  interval: any;
 }
 
 const ExercisePage: React.FC = () => {
@@ -44,7 +44,6 @@ const ExercisePage: React.FC = () => {
     "A#3",
     "Bb3",
     "B3",
-
     "Cb3",
     "C3",
     "C#3",
@@ -53,7 +52,6 @@ const ExercisePage: React.FC = () => {
     "D#3",
     "Eb3",
     "E3",
-
     "Fb3",
     "F3",
     "F#3",
@@ -65,7 +63,6 @@ const ExercisePage: React.FC = () => {
     "A#4",
     "Bb4",
     "B4",
-
     "Cb4",
     "C4",
     "C#4",
@@ -74,7 +71,6 @@ const ExercisePage: React.FC = () => {
     "D#4",
     "Eb4",
     "E4",
-
     "Fb4",
     "F4",
     "F#4",
@@ -86,7 +82,6 @@ const ExercisePage: React.FC = () => {
     "A#5",
     "Bb5",
     "B5",
-
     "Cb5",
     "C5",
     "C#5",
@@ -95,7 +90,6 @@ const ExercisePage: React.FC = () => {
     "D#5",
     "Eb5",
     "E5",
-
     "Fb5",
     "F5",
     "F#5",
@@ -137,56 +131,71 @@ const ExercisePage: React.FC = () => {
     .join("")
     .replace("-", "");
 
-  let equivalentInterval = "";
+  const eqInterval = {
+    d2: "P1",
+    A1: "m2",
+    d3: "M2",
+    A2: "m3",
+    d4: "M3",
+    A3: "P4",
+    d5: "A4",
+    d6: "P5",
+    A5: "m6",
+    d7: "M6",
+    A6: "m7",
+    d8: "M7",
+    A7: "P8",
+  };
+
   //still need to add double dim and aug FIX FIX
-  switch (formattedInterval) {
-    case "d2":
-      equivalentInterval = "P1";
-      break;
-    case "A1":
-      equivalentInterval = "m2";
-      break;
-    case "d3":
-      equivalentInterval = "M2";
-      break;
-    case "A2":
-      equivalentInterval = "m3";
-      break;
-    case "d4":
-      equivalentInterval = "M3";
-      break;
-    case "A3":
-      equivalentInterval = "P4";
-      break;
-    case "d5":
-      equivalentInterval = "A4";
-      break;
-    case "d6":
-      equivalentInterval = "P5";
-      break;
-    case "A5":
-      equivalentInterval = "m6";
-      break;
-    case "d7":
-      equivalentInterval = "M6";
-      break;
-    case "A6":
-      equivalentInterval = "m7";
-      break;
-    case "d8":
-      equivalentInterval = "M7";
-      break;
-    case "A7":
-      equivalentInterval = "P8";
-      break;
-    default:
-      equivalentInterval = formattedInterval;
-  }
+  // switch (formattedInterval) {
+  //   case "d2":
+  //     equivalentInterval = "P1";
+  //     break;
+  //   case "A1":
+  //     equivalentInterval = "m2";
+  //     break;
+  //   case "d3":
+  //     equivalentInterval = "M2";
+  //     break;
+  //   case "A2":
+  //     equivalentInterval = "m3";
+  //     break;
+  //   case "d4":
+  //     equivalentInterval = "M3";
+  //     break;
+  //   case "A3":
+  //     equivalentInterval = "P4";
+  //     break;
+  //   case "d5":
+  //     equivalentInterval = "A4";
+  //     break;
+  //   case "d6":
+  //     equivalentInterval = "P5";
+  //     break;
+  //   case "A5":
+  //     equivalentInterval = "m6";
+  //     break;
+  //   case "d7":
+  //     equivalentInterval = "M6";
+  //     break;
+  //   case "A6":
+  //     equivalentInterval = "m7";
+  //     break;
+  //   case "d8":
+  //     equivalentInterval = "M7";
+  //     break;
+  //   case "A7":
+  //     equivalentInterval = "P8";
+  //     break;
+  //   default:
+  //     equivalentInterval = formattedInterval;
+  // }
 
   const newIntervalState: IntervalState = {
     firstNote,
     secondNote,
-    interval: equivalentInterval,
+    interval: "placeholder",
   };
 
   const [intervalState, setIntervalState] = useState(newIntervalState);
