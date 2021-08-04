@@ -111,7 +111,7 @@ const listAscending = function () {
 
   return cleaned;
 };
-console.log("listAscening is:", listAscending());
+// console.log("listAscening is:", listAscending());
 
 const listDescending = function () {
   const allDescending = [];
@@ -137,23 +137,15 @@ const listDescending = function () {
 
   return cleaned;
 };
-console.log("list descending is", listDescending());
-
-// const firstNoteIndex: number = _.sample(_.range(notes.length - 1));
-// const firstNote = notes[firstNoteIndex];
-
-// const intervalIndex: number = _.sample(_.range(intervals.length - 1));
-// const interval = intervals[intervalIndex];
-
-// const secondNote = Note.transpose(firstNote, interval);
+// console.log("list descending is", listDescending());
 
 const listAll = listAscending().concat(listDescending());
 
-console.log("list all is", listAll);
+// console.log("list all is", listAll);
 
 const exercise = function () {
   return _.sample(listAll);
 };
-console.log("exercise is", exercise());
+// console.log("exercise is", exercise());
 
 export default exercise;
