@@ -87,7 +87,16 @@ const firstNote = notes[firstNoteIndex];
 const intervalIndex: number = _.sample(_.range(intervals.length - 1));
 const interval = intervals[intervalIndex];
 
+const restrictSecondNote = function () {
+  //need to add descending and make sure it doesn't go outside our range
+};
+
 const secondNote = Note.transpose(firstNote, interval);
-const exercise = { firstNote, secondNote, interval };
+
+//tonal only does ascending, so randomly rearrange first and second notes to get both in exercises
+const exercise =
+  _.sample(_.range(6)) > 3
+    ? { firstNote, secondNote, interval }
+    : { firstNote: secondNote, secondNote: firstNote, interval };
 
 export default exercise;
